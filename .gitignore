@@ -36,10 +36,3 @@ sysinfo.txt
 *.apk
 *.unitypackage
 *.log
-CIGA/Logs/AssetImportWorker0.log
-CIGA/Logs/shadercompiler-AssetImportWorker0.log
-CIGA/Logs/shadercompiler-UnityShaderCompiler.exe0.log
-CIGA/Logs/shadercompiler-UnityShaderCompiler.exe1.log
-CIGA/Logs/shadercompiler-UnityShaderCompiler.exe2.log
-CIGA/Logs/shadercompiler-UnityShaderCompiler.exe3.log
-*.log
