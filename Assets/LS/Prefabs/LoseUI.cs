@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class LoseUI : MonoBehaviour
 {
@@ -10,16 +12,27 @@ public class LoseUI : MonoBehaviour
     {
         if(GameManager.Instance.m_CurrentHeart<= 0)
         {
-            
+            GameOver();
         }
     }
 
 
-
     public GameObject GameOverUI;
+
     public void GameOver()
     {
-        GameOverUI.SetActive(true);
-        
+        Time.timeScale = 0.3f;
+        GameOverUI.GetComponent<DOTweenAnimation>().DOPlay();
+    }
+
+    public void BackMenu()
+    {
+        SceneManager.LoadScene("StartScene");
+
+    }
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("GameScene");
+
     }
 }
