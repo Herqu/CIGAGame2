@@ -39,6 +39,22 @@ public class TrainMovement : MonoBehaviour
             Debug.DrawRay(transform.position, circleDirection, Color.red);
             Debug.DrawRay(transform.position, fowardDirection, Color.cyan);
             Debug.DrawRay(transform.position, fowardDirectionBefore, Color.green);
+
+            if (Vector3.Angle(circleDirection, transform.right) > 90f)
+                transform.Rotate(transform.forward, Vector3.Angle(circleDirection, transform.up));
+            else
+                transform.Rotate(transform.forward, -Vector3.Angle(circleDirection, transform.up));
+
+
+            transform.GetComponent<SpriteRenderer>().flipY = true;
+            if (Clockwise == 1)
+            {
+                transform.GetComponent<SpriteRenderer>().flipX = true;
+            }
+            else
+            {
+                transform.GetComponent<SpriteRenderer>().flipX = false;
+            }
         }
         else {
             transform.Translate(fowardDirection.normalized * trainSpeed * Time.deltaTime, Space.World);
