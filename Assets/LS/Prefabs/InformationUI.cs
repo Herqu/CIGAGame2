@@ -35,29 +35,36 @@ public class InformationUI : MonoBehaviour
         m_CoinNum.text = GameManager.Instance.m_CurrentMoneyNum.ToString();
 
 
-
-
-        if(m_CurrentHeartNum != GameManager.Instance.m_CurrentHeart)
+        if(GameManager.Instance.m_CurrentHeart < 0)
         {
 
-
-
-            for (int i = 0; i < m_CurrentHeartNum; i++)
-            {
-                Destroy(m_CurrentAllHeart[i].gameObject);
-            }
-            m_CurrentAllHeart.Clear();
-
-            m_CurrentHeartNum = GameManager.Instance.m_CurrentHeart;
-
-
-            for (int i = 0; i < m_CurrentHeartNum; i++)
-            {
-                GameObject obj = Instantiate(m_HeartPrefab, m_HearAnchor.transform);
-                m_CurrentAllHeart.Add(obj.transform);
-            }
-
         }
+        else
+        {
+
+            if (m_CurrentHeartNum != GameManager.Instance.m_CurrentHeart)
+            {
+
+
+
+                for (int i = 0; i < m_CurrentHeartNum; i++)
+                {
+                    Destroy(m_CurrentAllHeart[i].gameObject);
+                }
+                m_CurrentAllHeart.Clear();
+
+                m_CurrentHeartNum = GameManager.Instance.m_CurrentHeart;
+
+
+                for (int i = 0; i < m_CurrentHeartNum; i++)
+                {
+                    GameObject obj = Instantiate(m_HeartPrefab, m_HearAnchor.transform);
+                    m_CurrentAllHeart.Add(obj.transform);
+                }
+
+            }
+        }
+
 
 
 
