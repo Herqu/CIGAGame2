@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class InformationUI : MonoBehaviour
 {
 
-    public Text m_CoinNum;
     public Transform m_HearAnchor;
 
     public GameObject m_HeartPrefab;
@@ -32,7 +31,6 @@ public class InformationUI : MonoBehaviour
 
     private void Update()
     {
-        m_CoinNum.text = GameManager.Instance.m_CurrentMoneyNum.ToString();
 
 
         if(GameManager.Instance.m_CurrentHeart < 0)

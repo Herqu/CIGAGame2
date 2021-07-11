@@ -59,8 +59,22 @@ public class TrainMovement : MonoBehaviour
         }
         else {
             transform.Translate(fowardDirection.normalized * trainSpeed * Time.deltaTime, Space.World);
-            if(turnAngle != 0){ 
-                transform.Rotate(transform.forward, -Vector3.Angle(circleDirection, transform.up));
+            if(turnAngle != 0){
+                if(fowardDirection.y < 0)
+                {
+                    if (fowardDirection.x > 0)
+                        transform.Rotate(transform.forward, transform.rotation.z - turnAngle);
+                    else
+                        transform.Rotate(transform.forward, transform.rotation.z + turnAngle);
+                } else
+                {
+                    if (fowardDirection.x > 0)
+                        transform.Rotate(transform.forward, transform.rotation.z + turnAngle);
+                    else
+                        transform.Rotate(transform.forward, transform.rotation.z - turnAngle);
+
+                }
+
                 turnAngle = 0f;
             }
         }
@@ -93,7 +107,7 @@ public class TrainMovement : MonoBehaviour
             GameManager.Instance.CutHeart();
         } else if(collision.gameObject.tag.Equals("WallY"))
         {
-            turnAngle = Vector2.Angle(fowardDirection, new Vector2(-1 * fowardDirection.x, fowardDirection.y));
+            turnAngle = 360-Vector2.Angle(fowardDirection, new Vector2(-1 * fowardDirection.x, fowardDirection.y));
             fowardDirection = new Vector2(-1 * fowardDirection.x, fowardDirection.y);
             GameManager.Instance.CutHeart();
         }

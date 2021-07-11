@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class TrainStation : MonoBehaviour
 {
@@ -21,8 +22,6 @@ public class TrainStation : MonoBehaviour
             if (collision.tag == "Train")
             {
                 GameLevelWin();
-                CloseTrainStation();
-                OpenCloseUI();
             }
         }
 
@@ -30,69 +29,32 @@ public class TrainStation : MonoBehaviour
 
 
 
-    public int m_MoneyRatio = 100;
 
     public void GameLevelWin()
     {
-        GameManager.Instance.AddMoreMoney(GameManager.Instance.MeetTrainStation() * m_MoneyRatio);
+        Time.timeScale = 0;
+        m_IsTrainstationOn = false;
+        GetComponent<SpriteRenderer>().color = Color.gray;
+        m_ShowWinPanel.DOPlayForward();
     }
 
 
 
     public bool m_IsTrainstationOn = true;
-
-    public void CloseTrainStation()
-    {
-        m_IsTrainstationOn = false;
-        GetComponent<SpriteRenderer>().color = Color.gray;
-    }
+    public string TrainStationName;
+    public DOTweenAnimation m_ShowWinPanel;
 
 
 
-    public void OpenCloseUI()
-    {
-        Time.timeScale = 0;
-        m_StoreUI.SetActive(true);
-    }
 
     public void UICloseStoreUI()
     {
         Time.timeScale = 1f;
-        m_StoreUI.SetActive(false);
+        m_ShowWinPanel.DOPlayBackwards();
+
     }
 
-    public int m_CarriageCost = 100;
-    public int m_heartCost= 100;
 
-
-    public void BuyCarriage()
-    {
-        if (GameManager.Instance.CostMoney(m_CarriageCost))
-        {
-            GameManager.Instance.AddCarriage();
-            Debug.Log("购买了个火车车厢");
-        }
-        else
-        {
-            Debug.Log("没钱");
-
-        }
-    }
-
-    public void BuyHeart()
-    {
-        if (GameManager.Instance.CostMoney(m_CarriageCost))
-        {
-            GameManager.Instance.AddHeart();
-            Debug.Log("购买了个一条命");
-
-        }
-        else
-        {
-            Debug.Log("没钱");
-
-        }
-    }
 
 
 }
