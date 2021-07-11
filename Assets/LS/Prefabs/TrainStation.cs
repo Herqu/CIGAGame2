@@ -29,6 +29,7 @@ public class TrainStation : MonoBehaviour
             if (collision.tag == "Train")
             {
                 GameLevelWin();
+                AddCarriage(collision.gameObject);
             }
         }
 
@@ -63,5 +64,16 @@ public class TrainStation : MonoBehaviour
 
 
 
+
+
+    public GameObject m_TrainCarriage;
+
+    public void AddCarriage(GameObject CurrentTrain)
+    {
+        GameObject obj = Instantiate(m_TrainCarriage, CurrentTrain.GetComponent<TrainLastCarriage>().m_LastCarrage.transform.position, CurrentTrain.GetComponent<TrainLastCarriage>().m_LastCarrage.transform.rotation,CurrentTrain.transform.parent);
+        obj.GetComponent<TrainCarriage>().forwardPoint = CurrentTrain.GetComponent<TrainLastCarriage>().m_LastCarrage;
+        obj.GetComponent<DistanceJoint2D>().connectedBody= CurrentTrain.GetComponent<TrainLastCarriage>().m_LastCarrage.GetComponent<Rigidbody2D>();
+        CurrentTrain.GetComponent<TrainLastCarriage>().m_LastCarrage = obj;
+    }
 
 }

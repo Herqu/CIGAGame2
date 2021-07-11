@@ -60,7 +60,12 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void CutHeart()
     {
-
+        m_audio.clip = m_DeathClip;
+        m_audio.Play();
         m_CurrentHeart = 0;
     }
+
+
+
+    public AudioClip m_DeathClip;
 }

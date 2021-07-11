@@ -556,6 +556,7 @@ MonoBehaviour:
   m_IsTrainstationOn: 1
   TrainStationName: "\u54C8\u54C8\u54C8\u8F66\u7AD9\u3002"
   m_ShowWinPanel: {fileID: 200256836608338724}
+  m_TrainCarriage: {fileID: 2045925442992687745, guid: 73527f14560a6444196f1072d57bd9db, type: 3}
 --- !u!114 &4193445862549193572
 MonoBehaviour:
   m_ObjectHideFlags: 0
