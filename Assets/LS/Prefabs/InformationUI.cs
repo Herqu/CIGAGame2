@@ -17,7 +17,7 @@ public class InformationUI : MonoBehaviour
     {
         m_CurrentAllHeart.AddRange(m_HearAnchor.GetComponents<Transform>());
         m_CurrentAllHeart.Remove(m_HearAnchor.transform);
-        m_CurrentHeartNum = GameManager.Instance.m_CurrentHeart;
+        m_CurrentHeartNum = GameManager.Instance.passengerNumber;
 
 
 
@@ -33,14 +33,14 @@ public class InformationUI : MonoBehaviour
     {
 
 
-        if(GameManager.Instance.m_CurrentHeart < 0)
+        if(GameManager.Instance.passengerNumber < 0)
         {
 
         }
         else
         {
 
-            if (m_CurrentHeartNum != GameManager.Instance.m_CurrentHeart)
+            if (m_CurrentHeartNum != GameManager.Instance.passengerNumber)
             {
 
 
@@ -51,7 +51,7 @@ public class InformationUI : MonoBehaviour
                 }
                 m_CurrentAllHeart.Clear();
 
-                m_CurrentHeartNum = GameManager.Instance.m_CurrentHeart;
+                m_CurrentHeartNum = GameManager.Instance.passengerNumber;
 
 
                 for (int i = 0; i < m_CurrentHeartNum; i++)

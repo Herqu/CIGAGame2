@@ -17,10 +17,11 @@ public class GameManager : MonoBehaviour
     public int m_CurrentMoneyNum = 0;
     public int m_CurrentHeart = 1;
 
-
+    public AudioSource m_audio;
 
     public void ChangePassengerNumber(int number)
     {
+        m_audio.Play();
         passengerNumber = passengerNumber + number;
     }
 
@@ -34,24 +35,8 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void AddMoreMoney(int num)
-    {
-        m_CurrentMoneyNum += num;
-    }
 
-    public bool CostMoney(int num)
-    {
-        if (num <= m_CurrentMoneyNum)
-        {
-            m_CurrentMoneyNum -= num;
-            return true;
 
-        }
-        else
-        {
-            return false;
-        }
-    }
 
 
     /// <summary>
@@ -75,6 +60,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void CutHeart()
     {
-        m_CurrentHeart -= 1;
+
+        m_CurrentHeart = 0;
     }
 }
