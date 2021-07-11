@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015de9f5245cd814ca608ee472e8264c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Floodlight: {fileID: 6905161956098957351, guid: a53ea84211ea57f4985a5ebac925fcdb, type: 3}
 --- !u!114 &3903215943626102163
 MonoBehaviour:
   m_ObjectHideFlags: 0
