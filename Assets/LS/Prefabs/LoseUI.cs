@@ -27,11 +27,13 @@ public class LoseUI : MonoBehaviour
 
     public void BackMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("StartScene");
 
     }
     public void RestartGame()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("GameScene");
 
     }

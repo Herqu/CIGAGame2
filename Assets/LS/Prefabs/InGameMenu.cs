@@ -8,29 +8,37 @@ public class InGameMenu : MonoBehaviour
 {
 
     public DOTweenAnimation m_StopPanelUP;
-    public DOTweenAnimation m_StopPanelDown;
 
     public void StopGame()
     {
 
-        if (Time.timeScale == 1)
-        {
-            m_StopPanelUP.DOPlay();
-            Time.timeScale = 0f;
-        }
-        else
-        {
-            m_StopPanelDown.DOPlay();
-            Time.timeScale = 1f;
+        m_StopPanelUP.DOPlayForward();
+        Time.timeScale = 0f;
 
-        }
 
+
+    }
+
+
+    public void ContinueGame()
+    {
+        m_StopPanelUP.DOPlayBackwards();
+        Time.timeScale = 1f;
 
     }
 
     public void RestartGame()
     {
+        Time.timeScale = 1f;
+
         SceneManager.LoadScene("GameScene");
+
+    }
+
+    public void BackMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("StartScene");
 
     }
 }
