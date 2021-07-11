@@ -9,6 +9,7 @@ public class TrainMovement : MonoBehaviour
     public GameObject railway;
     public Vector2 fowardDirection;
     public Vector2 circleDirection;
+    public GameObject deathParticles;
 
     private float angleSpeed;
     private bool moveAround;
@@ -102,11 +103,13 @@ public class TrainMovement : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("WallX"))
         {
+            Instantiate(deathParticles, transform.position, transform.rotation);
             turnAngle = Vector2.Angle(fowardDirection, new Vector2(fowardDirection.x, -1 * fowardDirection.y));
             fowardDirection = new Vector2(fowardDirection.x, -1 * fowardDirection.y);
             GameManager.Instance.CutHeart();
         } else if(collision.gameObject.tag.Equals("WallY"))
         {
+            Instantiate(deathParticles, transform.position, transform.rotation);
             turnAngle = 360-Vector2.Angle(fowardDirection, new Vector2(-1 * fowardDirection.x, fowardDirection.y));
             fowardDirection = new Vector2(-1 * fowardDirection.x, fowardDirection.y);
             GameManager.Instance.CutHeart();
